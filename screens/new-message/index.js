@@ -1,12 +1,30 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const NewMessageScreen = ({ navigation: { navigate }, route }) => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={{ marginBottom: 10, fontSize: 24, fontWeight: "700" }}>
-          Send a new message
-        </Text>
+        <View style={styles.controls}>
+          <Text style={{ marginBottom: 10, fontSize: 20, fontWeight: "700" }}>
+            New message
+          </Text>
+          <TouchableOpacity
+            onPress={() => navigate("Messages")}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center"
+            }}
+          >
+            <Ionicons
+              name="close-circle-sharp"
+              size={36}
+              color="red"
+              style={{ marginBottom: 6 }}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     </>
   );
@@ -20,25 +38,11 @@ const styles = StyleSheet.create({
     paddingVertical: 25,
     paddingHorizontal: 25
   },
-  emptyState: {
+  controls: {
     display: "flex",
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingHorizontal: 25,
-    justifyContent: "center",
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center"
-  },
-  emptyMessage: {
-    title: {
-      fontSize: 26,
-      fontWeight: "700",
-      marginBottom: 6
-    },
-    subtitle: {
-      fontSize: 16,
-      textAlign: "center",
-      paddingHorizontal: 14
-    }
   }
 });
 

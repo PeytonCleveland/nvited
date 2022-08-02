@@ -10,7 +10,7 @@ const Header = ({ navigate, route }) => {
     <View style={styles.container}>
       {stackScreens.some((value) => route.name.includes(value)) ? (
         <BackButton navigate={navigate} />
-      ) : (
+      ) : route.name.includes("Profile") ? null : (
         <>
           <Text>Nvited v0.1.0</Text>
           <View style={styles.controls}>

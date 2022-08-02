@@ -14,7 +14,11 @@ const BottomTabNavigation = () => {
           if (route.name === "Home") {
             iconName = focused ? "apps-sharp" : "apps-sharp";
           } else if (route.name === "Discover") {
-            iconName = focused ? "globe-sharp" : "globe-sharp";
+            iconName = focused ? "earth-sharp" : "earth-sharp";
+          } else if (route.name === "Post") {
+            iconName = focused ? "add-circle-sharp" : "add-circle-sharp";
+            size = 64;
+            color = "black";
           } else if (route.name === "Activity") {
             iconName = focused ? "flash-sharp" : "flash-sharp";
           } else if (route.name === "Profile") {
@@ -23,18 +27,20 @@ const BottomTabNavigation = () => {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
+        tabBarShowLabel: false,
         tabBarActiveTintColor: "blue",
         tabBarInactiveTintColor: "gray",
         headerShown: false,
         tabBarStyle: {
-          height: 95,
-          paddingBottom: 35,
-          paddingTop: 8
+          height: 100,
+          paddingBottom: 24,
+          paddingTop: 6
         }
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Discover" component={HomeScreen} />
+      <Tab.Screen name="Post" component={HomeScreen} />
       <Tab.Screen name="Activity" component={HomeScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
