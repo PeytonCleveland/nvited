@@ -9,14 +9,14 @@ import { createContext, useMemo, useState } from "react";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const [authenticatedUser, setAuthenticatedUser] = useState();
+  const [authenticatedUser, setAuthenticatedUser] = useState({});
 
   const AppContext = createContext();
 
   const appContextValue = useMemo(
     () => ({
       authenticatedUser,
-      setAuthenticatedUser
+      setAuthenticatedUser,
     }),
     [authenticatedUser]
   );
@@ -25,7 +25,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
-            headerShown: false
+            headerShown: false,
           }}
         >
           {!authenticatedUser ? (

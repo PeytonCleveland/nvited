@@ -1,13 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { Button, StyleSheet, Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Header from "../../components/header";
 
 const MessagesScreen = ({ navigation: { navigate }, route }) => {
   const messages = [];
   return (
     <>
-      <Header route={route} navigate={navigate} />
       {messages.length > 0 ? (
         <View style={styles.container}>
           <Text style={{ marginBottom: 10, fontSize: 24, fontWeight: "700" }}>
@@ -43,7 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingVertical: 25,
-    paddingHorizontal: 25
+    paddingHorizontal: 25,
   },
   emptyState: {
     display: "flex",
@@ -51,21 +49,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingHorizontal: 25,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   emptyMessage: {
     title: {
       fontSize: 26,
       fontWeight: "700",
-      marginBottom: 8
+      marginBottom: 8,
     },
     subtitle: {
       fontSize: 16,
       textAlign: "center",
       paddingHorizontal: 14,
-      marginBottom: 6
-    }
-  }
+      marginBottom: 6,
+    },
+  },
 });
 
 export default MessagesScreen;

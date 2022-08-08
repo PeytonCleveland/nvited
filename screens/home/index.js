@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import Button from "../../components/button";
 import CategoryCarousel from "../../components/category-carousel";
 import Header from "../../components/header";
@@ -12,70 +12,70 @@ const data = [
     title: "Coral Reef",
     description: "Location: Red Sea",
     source:
-      "https://images.unsplash.com/photo-1633205719979-e47958ff6d93?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      "https://images.unsplash.com/photo-1633205719979-e47958ff6d93?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
   },
   {
     title: "Phone",
     description: "iPhone 6 on the table",
     source:
-      "https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      "https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
   },
 
   {
     title: "Old building",
     description: "Location: Germany",
     source:
-      "https://images.unsplash.com/photo-1623345805780-8f01f714e65f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      "https://images.unsplash.com/photo-1623345805780-8f01f714e65f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
   },
   {
     title: "Coral Reef",
     description: "Location: Red Sea",
     source:
-      "https://images.unsplash.com/photo-1633205719979-e47958ff6d93?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      "https://images.unsplash.com/photo-1633205719979-e47958ff6d93?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
   },
   {
     title: "Phone",
     description: "iPhone 6 on the table",
     source:
-      "https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
+      "https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
   },
 
   {
     title: "Old building",
     description: "Location: Germany",
     source:
-      "https://images.unsplash.com/photo-1623345805780-8f01f714e65f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80"
-  }
+      "https://images.unsplash.com/photo-1623345805780-8f01f714e65f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
+  },
 ];
 
 const categories = [
   {
-    label: "🤿 Swimming"
+    label: "🤿 Swimming",
   },
   {
-    label: "🌲 Nature"
+    label: "🌲 Nature",
   },
   {
-    label: "🚴‍♀️ Bicycling"
+    label: "🚴‍♀️ Bicycling",
   },
   {
-    label: "🛍 Shopping"
+    label: "🛍 Shopping",
   },
   {
-    label: "🎸 Music"
+    label: "🎸 Music",
   },
   {
-    label: "🏞 Parks"
+    label: "🏞 Parks",
   },
   {
-    label: "🧺 Basket Weaving"
-  }
+    label: "🧺 Basket Weaving",
+  },
 ];
 
 const HomeScreen = ({ navigation: { navigate }, route }) => {
   return (
-    <>
-      <Header route={route} navigate={navigate} />
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+      <Header navigate={navigate} />
       <View style={styles.container}>
         <Text style={{ marginBottom: 10 }}>{GetGreeting()}</Text>
         <SearchBar />
@@ -99,7 +99,7 @@ const HomeScreen = ({ navigation: { navigate }, route }) => {
         <CategoryCarousel data={categories} />
         <StatusBar style="auto" />
       </View>
-    </>
+    </SafeAreaView>
   );
 };
 
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingVertical: 50,
-    paddingHorizontal: 25
+    paddingHorizontal: 25,
   },
   trending: {
     display: "flex",
@@ -118,8 +118,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 40,
     title: {
-      fontSize: 18
-    }
+      fontSize: 18,
+    },
   },
   categories: {
     display: "flex",
@@ -128,9 +128,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 40,
     title: {
-      fontSize: 18
-    }
-  }
+      fontSize: 18,
+    },
+  },
 });
 
 export default HomeScreen;
