@@ -7,11 +7,10 @@ import NotificationsScreen from "./screens/notifications";
 import { createContext, useMemo, useState } from "react";
 
 const Stack = createNativeStackNavigator();
+export const AppContext = createContext();
 
 const App = () => {
   const [authenticatedUser, setAuthenticatedUser] = useState();
-
-  const AppContext = createContext();
 
   const appContextValue = useMemo(
     () => ({
