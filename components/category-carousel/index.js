@@ -7,11 +7,11 @@ export default function CategoryCarousel({ data }) {
 
   const settings = {
     sliderWidth: width,
-    sliderHeight: 36,
-    itemWidth: 135,
+    sliderHeight: 85,
+    itemWidth: 95,
     data: data,
     renderItem: CategoryCarouselItem,
-    activeSlideAlignment: "start"
+    activeSlideAlignment: "start",
   };
 
   return (
@@ -23,6 +23,6 @@ export default function CategoryCarousel({ data }) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20
-  }
+    paddingTop: 8,
+  },
 });

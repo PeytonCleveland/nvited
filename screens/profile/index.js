@@ -9,6 +9,7 @@ import {
 import ProfileImage from "../../components/profile-image";
 import ProfileStats from "../../components/profile-stats";
 import TabSwitcher from "../../components/tab-switcher";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const ProfileScreen = ({ navigation: { goBack, navigate }, route }) => {
   return (
@@ -19,14 +20,29 @@ const ProfileScreen = ({ navigation: { goBack, navigate }, route }) => {
             <ProfileImage />
             <View style={{ display: "flex", flex: 1 }}>
               <ProfileStats />
-              <TouchableOpacity style={styles.profile.edit}>
-                <Text>Edit Profile</Text>
-              </TouchableOpacity>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <TouchableOpacity style={styles.profile.edit}>
+                  <Text>Edit Profile</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.profile.settings}
+                  onPress={() => navigate("Settings")}
+                >
+                  <Ionicons name={"settings-sharp"} size={16} color="gray" />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
           <Text style={styles.profile.name}>Peyton Cleveland</Text>
           <Text style={styles.profile.bio}>Bio text goes here</Text>
           <TabSwitcher />
+          <Text style={styles.profile.tab.header}>Happening Now</Text>
         </View>
         <StatusBar style="auto" />
       </View>
@@ -45,10 +61,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     paddingVertical: 32,
     edit: {
-      width: "100%",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      flex: 1,
+      flexDirection: "row",
+      backgroundColor: "lightgray",
+      paddingVertical: 6,
+      borderRadius: 6,
+      marginRight: 6,
+    },
+    settings: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      width: 38,
+      height: 35,
       flexDirection: "row",
       backgroundColor: "lightgray",
       paddingVertical: 6,
@@ -69,6 +97,13 @@ const styles = StyleSheet.create({
     bio: {
       fontSize: 16,
       marginBottom: 25,
+    },
+    tab: {
+      header: {
+        fontSize: 20,
+        fontWeight: "700",
+        marginBottom: 10,
+      },
     },
   },
 });

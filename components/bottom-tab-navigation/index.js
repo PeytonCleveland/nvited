@@ -1,12 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import ActivityScreen from "../../screens/activity-screen";
 import HomeScreen from "../../screens/home";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ProfileScreen from "../../screens/profile";
-import { View } from "react-native";
+import PostScreen from "../../screens/post";
 
 const Tab = createBottomTabNavigator();
-
-const emptyScreen = () => <View style={{ flex: 1 }} />;
 
 const BottomTabNavigation = () => {
   return (
@@ -19,7 +18,7 @@ const BottomTabNavigation = () => {
             iconName = focused ? "apps-sharp" : "apps-sharp";
           } else if (route.name === "Discover") {
             iconName = focused ? "earth-sharp" : "earth-sharp";
-          } else if (route.name === "PostStack") {
+          } else if (route.name === "Post") {
             iconName = focused ? "add-circle-sharp" : "add-circle-sharp";
             size = 64;
             color = "black";
@@ -44,8 +43,8 @@ const BottomTabNavigation = () => {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Discover" component={HomeScreen} />
-      <Tab.Screen name="Post" component={emptyScreen} />
-      <Tab.Screen name="Activity" component={HomeScreen} />
+      <Tab.Screen name="Post" component={PostScreen} />
+      <Tab.Screen name="Activity" component={ActivityScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );

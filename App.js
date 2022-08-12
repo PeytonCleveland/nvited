@@ -1,9 +1,11 @@
 import BottomTabNavigation from "./components/bottom-tab-navigation";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import CreatePostScreen from "./screens/create-post";
 import LoginScreen from "./screens/login";
 import MessageStack from "./components/message-stack";
 import NotificationsScreen from "./screens/notifications";
+import SettingsScreen from "./screens/settings";
 import { createContext, useMemo, useState } from "react";
 
 const Stack = createNativeStackNavigator();
@@ -32,11 +34,17 @@ const App = () => {
           ) : (
             <>
               <Stack.Screen name="Tabs" component={BottomTabNavigation} />
+              <Stack.Screen
+                options={{ gestureEnabled: false }}
+                name="CreatePost"
+                component={CreatePostScreen}
+              />
               <Stack.Screen name="MessageStack" component={MessageStack} />
               <Stack.Screen
                 name="Notifications"
                 component={NotificationsScreen}
               />
+              <Stack.Screen name="Settings" component={SettingsScreen} />
             </>
           )}
         </Stack.Navigator>

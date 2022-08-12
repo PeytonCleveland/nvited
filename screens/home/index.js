@@ -50,25 +50,25 @@ const data = [
 
 const categories = [
   {
-    label: "🤿 Swimming",
+    label: "Swimming",
   },
   {
-    label: "🌲 Nature",
+    label: "Nature",
   },
   {
-    label: "🚴‍♀️ Bicycling",
+    label: "Bicycling",
   },
   {
-    label: "🛍 Shopping",
+    label: "Shopping",
   },
   {
-    label: "🎸 Music",
+    label: "Music",
   },
   {
-    label: "🏞 Parks",
+    label: "Parks",
   },
   {
-    label: "🧺 Basket Weaving",
+    label: "Basket Weaving",
   },
 ];
 
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     backgroundColor: "#fff",
-    paddingVertical: 50,
+    paddingVertical: 44,
     paddingHorizontal: 25,
   },
   trending: {
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 40,
+    marginTop: 24,
     title: {
       fontSize: 18,
     },
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 40,
+    marginTop: 24,
     title: {
       fontSize: 18,
     },

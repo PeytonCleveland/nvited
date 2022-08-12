@@ -12,7 +12,7 @@ export default function InviteCarousel({ data }) {
     data: data,
     renderItem: CarouselInviteItem,
     hasParallaxImages: true,
-    activeSlideAlignment: "start"
+    activeSlideAlignment: "start",
   };
 
   return (
@@ -24,9 +24,9 @@ export default function InviteCarousel({ data }) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20
+    paddingTop: 16,
   },
   title: {
-    fontSize: 20
-  }
+    fontSize: 20,
+  },
 });
