@@ -6,29 +6,20 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Button from "../../components/button";
-import auth, { firebaseConfig } from "../../auth/firebase";
-import { signInWithPhoneNumber } from "firebase/auth";
-import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
 
-const LoginScreen = ({ navigation: { navigate } }) => {
-  const [number, onChangeNumber] = useState(null);
+const VerificationCodeScreen = ({ route }) => {
   const [inputFocused, setInputFocused] = useState(false);
-  const [countryCode, setCountryCode] = useState("1");
+  const [verificationCode, setVerificationCode] = useState(null);
 
-  const recaptchaVerifier = useRef(null);
+  const { confirmationResult } = route.params;
+  console.log(confirmationResult);
 
-  const handleLogin = () => {
-    const phoneNumber = `+${countryCode}${number}`;
-    Keyboard.dismiss();
-    signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier.current)
-      .then((confirmationResult) => {
-        navigate("Verify", { confirmationResult });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const handleConfirmCode = () => {
+    confirmationResult.confirm(verificationCode).catch((error) => {
+      console.log(error);
+    });
   };
 
   const handleBlur = () => {
@@ -41,8 +32,7 @@ const LoginScreen = ({ navigation: { navigate } }) => {
       <View style={styles.login}>
         <View style={styles.welcome}>
           <Text style={styles.welcome.title}>
-            You're invited
-            {"\n"} to join real life
+            Check your messages for the verification code.
           </Text>
         </View>
         <View
@@ -50,36 +40,25 @@ const LoginScreen = ({ navigation: { navigate } }) => {
             inputFocused ? styles.container.active : styles.container.inactive
           }
         >
-          <Text style={styles.title}>Login</Text>
-          <Text style={styles.label}>Phone number</Text>
+          <Text style={styles.title}>Verification Code</Text>
+          <Text style={styles.label}>6 digit code</Text>
           <View style={styles.phoneRow}>
-            <Button
-              label="🇺🇸"
-              style={styles.countryDropdown}
-              endIcon="chevron-down-sharp"
-            />
-            <Text style={styles.countryCode}>+ {countryCode}</Text>
             <TextInput
-              value={number}
-              onChangeText={onChangeNumber}
-              textContentType="telephoneNumber"
+              value={verificationCode}
+              onChangeText={setVerificationCode}
+              style={styles.phoneNumber}
               onFocus={() => setInputFocused(true)}
-              keyboardType="phone-pad"
-              autoCompleteType="tel"
-              style={styles.phone}
-              placeholder="(334) 782-9357"
+              onBlur={handleBlur}
+              keyboardType="number-pad"
+              placeholder="123456"
+              textContentType="oneTimeCode"
             />
           </View>
           <Button
             label="Login"
             variant="filled"
             fullWidth
-            onPress={() => handleLogin()}
-          />
-          <Text style={styles.signUp}>Don't have an account? Sign up</Text>
-          <FirebaseRecaptchaVerifierModal
-            ref={recaptchaVerifier}
-            firebaseConfig={firebaseConfig}
+            onPress={() => handleConfirmCode()}
           />
         </View>
       </View>
@@ -87,7 +66,7 @@ const LoginScreen = ({ navigation: { navigate } }) => {
   );
 };
 
-export default LoginScreen;
+export default VerificationCodeScreen;
 
 const styles = StyleSheet.create({
   login: {

@@ -6,13 +6,16 @@ import LoginScreen from "./screens/login";
 import MessageStack from "./components/message-stack";
 import NotificationsScreen from "./screens/notifications";
 import SettingsScreen from "./screens/settings";
+import VerificationCodeScreen from "./screens/VerificationCode";
 import { createContext, useMemo, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import auth from "./auth/firebase";
 
 const Stack = createNativeStackNavigator();
 export const AppContext = createContext();
 
 const App = () => {
-  const [authenticatedUser, setAuthenticatedUser] = useState({});
+  const [authenticatedUser, setAuthenticatedUser] = useState();
 
   const appContextValue = useMemo(
     () => ({
@@ -21,6 +24,15 @@ const App = () => {
     }),
     [authenticatedUser]
   );
+
+  onAuthStateChanged(auth, (user) => {
+    if (user != null) {
+      setAuthenticatedUser(user);
+    } else {
+      setAuthenticatedUser(null);
+    }
+  });
+
   return (
     <AppContext.Provider value={appContextValue}>
       <NavigationContainer>
@@ -30,7 +42,10 @@ const App = () => {
           }}
         >
           {!authenticatedUser ? (
-            <Stack.Screen name="Auth" component={LoginScreen} />
+            <>
+              <Stack.Screen name="Auth" component={LoginScreen} />
+              <Stack.Screen name="Verify" component={VerificationCodeScreen} />
+            </>
           ) : (
             <>
               <Stack.Screen name="Tabs" component={BottomTabNavigation} />

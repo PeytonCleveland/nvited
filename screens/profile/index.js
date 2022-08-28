@@ -27,7 +27,10 @@ const ProfileScreen = ({ navigation: { goBack, navigate }, route }) => {
                   justifyContent: "space-between",
                 }}
               >
-                <TouchableOpacity style={styles.profile.edit}>
+                <TouchableOpacity
+                  style={styles.profile.edit}
+                  onPress={() => navigate("EditProfile")}
+                >
                   <Text>Edit Profile</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
